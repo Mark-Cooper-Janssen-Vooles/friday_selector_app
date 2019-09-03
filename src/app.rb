@@ -1,4 +1,5 @@
 require_relative 'place.rb'
+require_relative 'methods.rb'
 
 places = []
 read_csv
@@ -16,12 +17,6 @@ def update_places_csv(places)
     end
 end
 
-
-#put this in the area after i update places
-# then call read_csv again...
-#update_places_csv(places)
-
-
 puts "Welcome to the CoderAcademy Friday Selector app."
 
 while true
@@ -37,12 +32,7 @@ while true
  print "> "
  option = gets.strip.to_i
    if option == 1
-        puts "-----------------------------"
-        puts "You should go to..."
-        randomized_array = places.shuffle
-        puts randomized_array[0].name
-        puts randomized_array[0].location
-        puts "-----------------------------"
+        run_option_1(places)
    elsif option == 2
         puts "What is the name of the place you wish to add?"
         print "> "
@@ -63,7 +53,9 @@ while true
             places_name = place_name + "1"
             places_name = Place.new({name: place_name, location: place_location, rating: place_rating})
             places.push(places_name)
+            #update CSV then re-read the CSV
             update_places_csv(places)
+            read_csv
 
         elsif input == 'N'
             #re-run loop
