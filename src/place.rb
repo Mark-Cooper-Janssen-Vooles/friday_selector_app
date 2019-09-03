@@ -1,3 +1,5 @@
+#require_relative 'app.rb'
+
 class Place
     attr_reader :name, :location
     attr_accessor :rating
@@ -13,18 +15,16 @@ class Place
 end
 
 PLACES_FILE = 'list_places.csv'
+
 ###Read information from CSV file: 
 def read_csv
     headers = []
     values = []
     File.open(PLACES_FILE).each_with_index do |line, index|
-        if index == 0 
-        headers << line.split(',')
-        else 
+            if line.length > 1
             values << line
-        end
+            end
     end
-
     #turns .csv into array, splitting at each comma
     places_mapped = values.map do |place|
         place.split(',')
@@ -34,10 +34,6 @@ def read_csv
         Place.new({name: place[0], location: place[1], rating: place[2]})
     end
 end
-
-#read_csv
-#use to check we have correctly created objects
-#puts Place.all[0].name
 
 
 
