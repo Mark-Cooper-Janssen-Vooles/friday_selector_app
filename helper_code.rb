@@ -11,6 +11,7 @@ samaa = {
  title: "Student at Coder Academy",
  location: "120 Spencer Street, Melbourne"
 }
+
 all_contacts = [mark, samaa]
 puts "Welcome to your contacts app."
 puts " "

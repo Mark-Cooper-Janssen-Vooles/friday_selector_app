@@ -12,7 +12,7 @@
 
 * The files will then be seperated into different files: app.rb as the basic flow of the app, methods.rb which will hold the methods that need to be called, and place.rb which will hold the place class.
 
-* Then the implementation of gems will follow. Colorize will be used among others. 
+* Then the implementation of gems will follow. Colorize will be used as well as Geocoder (to get the location of the place) among others.
 
 * If there is time, a rating will be added to the place class and this will factor into the probability of a place being selected. I.e. places with a low rating will be selected less, and those with an unknown or higher rating will be selected more. At initialisation the user will be asked if they wish to provide a starting rating. 
 
@@ -63,6 +63,7 @@ Errors will be need to be handled when retrieving from Gems, using rescue / catc
 use this to do it. 
 include screenshot 
  https://www.lucidchart.com/pages/home
+ https://www.lucidchart.com/documents/edit/336a31b0-b685-4d28-9eef-ee49e124b943/0_0?beaconFlowId=B97F72270375A25C
 
 - show the workflow/logic and/or integration of the features in your application for each feature.
 - utilise a recognised format or set of conventions for a control flow diagram, such as UML.
@@ -77,4 +78,7 @@ use this to do it: need 3 screenshots
 https://trello.com/b/vN8tdQGt/terminal-app
 
 [Trello Project Management Link](https://trello.com/b/vN8tdQGt/terminal-app)
+
+Screenshot 1: 
+https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png
 
