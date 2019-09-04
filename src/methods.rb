@@ -166,17 +166,27 @@ end
     end
 
     def delete_place(places, place_to_delete)
-        places.each_with_index do |place, index|
+        in_database = false
+        places.each do |place|
             if place.name == place_to_delete
-                places.delete_at(index)
-                update_places_csv(places)
-                read_csv
-            else
-                puts "That place is not in our database!"
+                in_database = true
             end
         end
-        puts `clear`
-        puts "The place was deleted from the database!"
+        if in_database == true
+            places.each_with_index do |place, index|
+                if place.name == place_to_delete
+                    places.delete_at(index)
+                    update_places_csv(places)
+                    read_csv
+                    puts `clear`
+                    puts "The place was deleted from the database!"
+
+                end
+            end
+        else
+            puts `clear`
+            puts "That place is not in our database!"
+        end
     end
 
 def option_4_yes_delete(places)
@@ -224,7 +234,7 @@ def update_place(places, place_to_update)
             if input >= 1 || input <= 5
                 place.rating = input
                 puts "The rating for #{place.name} is now #{place.rating}."
-                
+
                 update_places_csv(places)
                 read_csv
             else
