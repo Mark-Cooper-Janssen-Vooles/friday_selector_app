@@ -1,19 +1,25 @@
 require "tty-prompt"
 
 def run_option_1(places)
-    puts "-----------------------------"
+    puts "------------------------------------------------------------"
     puts "You should go to..."
 
     randomized_array = places.shuffle
     puts randomized_array[0].name.white.on_black.underline
     puts randomized_array[0].location
-    puts "-----------------------------"
+    puts "------------------------------------------------------------"
     prompt1 = TTY::Prompt.new
     response = prompt1.select("Are you actually going to go there? Selecting yes will increase the visits count.", %w(Yes No))
     if response == "Yes"
         randomized_array[0].increase_visits
         update_places_csv(places)
         read_csv
+        puts `clear`
+        puts "------------------------------------------------------------"
+        puts "Enjoy your vist to #{randomized_array[0].name}!"
+        puts "------------------------------------------------------------"
+    else
+        puts `clear`
     end
 end
 
@@ -28,7 +34,7 @@ module OptionTwo
                 puts "You must enter something!"
             end
         elsif num_or_word == "num"
-            if data > 0 && data < 6
+            if data >= 1 && data <= 5
                 return data
             elsif
                 puts "You must enter a rating between 1 and 5!"
@@ -92,6 +98,9 @@ module OptionTwo
                 read_csv
                 #exit loop
                 puts `clear`
+                puts "------------------------------------------------------------"
+                puts "You have successfully added #{places_name.name} to the database!"
+                puts "------------------------------------------------------------"
                 status = true
                 return places
             elsif input == 'N'
@@ -111,13 +120,14 @@ def option_3_display(places)
     puts `clear`
     prompt = TTY::Prompt.new
     response = prompt.select("Do you want to see a list ordered by most visited or highest rated?") do |menu|
-        menu.choice "Most visited"
-        menu.choice "Highest rated"
+        menu.choice "Most visited - all"
+        menu.choice "Highest rated - all"
+        menu.choice "Rated higher than 4.5 stars"
     end
 
-    if response == "Most visited"
+    if response == "Most visited - all"
         puts `clear`
-        puts "-----------------------------"
+        puts "------------------------------------------------------------"
             sorted_array = places.sort! do |place2, place1| 
                 place1.visits.to_i <=> place2.visits.to_i
             end
@@ -125,10 +135,10 @@ def option_3_display(places)
             sorted_array.each do |place|
                 puts "#{place.name} | #{place.visits.to_s}"
             end
-        puts "-----------------------------"
-    elsif response == "Highest rated"
+        puts "------------------------------------------------------------"
+    elsif response == "Highest rated - all"
         puts `clear`
-        puts "-----------------------------"
+        puts "------------------------------------------------------------"
             sorted_array = places.sort! do |place2, place1| 
                 place1.rating.to_i <=> place2.rating.to_i
             end
@@ -136,63 +146,76 @@ def option_3_display(places)
             sorted_array.each do |place|
                 puts "#{place.name} | #{place.rating.to_s}"
             end
-        puts "-----------------------------"
+        puts "------------------------------------------------------------"
+    elsif response == "Rated higher than 4.5 stars"
+        puts `clear`
+        puts "------------------------------------------------------------"
+        def over_four_point_five(places)
+            over_four_half = places.map do |place|
+                if place.rating.to_f >= 4.5 
+                    place
+                end
+            end
+            #print over_four_half
+            over_four_half.each do |place|
+                if place != nil
+                    puts place.name
+                end
+            end
+        end
+        over_four_point_five(places)
+        puts "------------------------------------------------------------"
     end
 
 end
 
-# def view_all(places)
-#     puts "-----------------------------"
-#     places_names = places.map do |place|
-#         place.name
-#     end
-#     places_names.sort.each do |places_name|
-#         puts places_name
-#     end
-#     puts "-----------------------------"
-# end
+## methods for option 4
+def view_all(places)
+puts "------------------------------------------------------------"
+places_names = places.map do |place|
+    place.name
+end
+places_names.sort.each do |places_name|
+    puts places_name
+end
+puts "------------------------------------------------------------"
+end
 
+def delete_place(places, place_to_delete)
+    in_database = false
 
-#def option_4_delete_place(places)
-    def view_all(places)
-    puts "-----------------------------"
-    places_names = places.map do |place|
-        place.name
-    end
-    places_names.sort.each do |places_name|
-        puts places_name
-    end
-    puts "-----------------------------"
-    end
-
-    def delete_place(places, place_to_delete)
-        in_database = false
-        places.each do |place|
-            if place.name == place_to_delete
-                in_database = true
-            end
-        end
-        if in_database == true
-            places.each_with_index do |place, index|
-                if place.name == place_to_delete
-                    places.delete_at(index)
-                    update_places_csv(places)
-                    read_csv
-                    puts `clear`
-                    puts "The place was deleted from the database!"
-
-                end
-            end
-        else
-            puts `clear`
-            puts "That place is not in our database!"
+    puts "in delete_place method"
+    places.each do |place|
+        if place.name.downcase == place_to_delete.downcase
+            in_database = true
         end
     end
+
+    if in_database == true
+        places.each_with_index do |place, index|
+            if place.name.downcase == place_to_delete.downcase
+                places.delete_at(index)
+                update_places_csv(places)
+                read_csv
+                puts `clear`
+                puts "------------------------------------------------------------"
+                puts "'#{place.name}' was deleted from the database!"
+                puts "------------------------------------------------------------"
+
+            end
+        end
+    else
+        puts `clear`
+        puts "------------------------------------------------------------"
+        puts "That place is not in our database!"
+        puts "------------------------------------------------------------"
+    end
+end
 
 def option_4_yes_delete(places)
     puts "Enter the name of the place you want to delete"
     print "> "
-    place_to_delete = STDIN.gets.strip
+    place_to_delete = STDIN.gets.strip.downcase
     delete_place(places, place_to_delete)
 end
 
@@ -221,30 +244,48 @@ def option_4_delete_place(places)
     end
 end
 
+## methods for option 5
 
 def update_place(places, place_to_update)
-    places.each_with_index do |place, index|
+    in_database = false
+
+    places.each do |place|
         if place.name.downcase == place_to_update.downcase
-            puts "The current rating is #{place.rating}."
-            puts "What rating do you want to give it instead?"
-            puts "It can be anything from 1 to 5, decimals allowed."
-            print "> "
-            input = STDIN.gets.strip.to_f
-                #check if input is an 
-            if input >= 1 || input <= 5
-                place.rating = input
-                puts "The rating for #{place.name} is now #{place.rating}."
-
-                update_places_csv(places)
-                read_csv
-            else
-                puts "You need to put a number between 1 and 5."
-            end
-
+            in_database = true
         end
     end
-    # puts `clear`
-    # puts "The place was deleted from the database!"
+
+    if in_database == true
+        places.each_with_index do |place, index|
+            if place.name.downcase == place_to_update.downcase
+                puts "The current rating is #{place.rating}."
+                puts "What rating do you want to give it instead?"
+                puts "It can be anything from 1 to 5, decimals allowed."
+                print "> "
+                input = STDIN.gets.strip.to_f
+                    #check if input is an 
+                if input >= 1 && input <= 5
+                    place.rating = input
+                    puts `clear`
+                    puts "The rating for #{place.name} is now #{place.rating}."
+
+                    update_places_csv(places)
+                    read_csv
+                else
+                    puts `clear`
+                    puts "------------------------------------------------------------"
+                    puts "You need to put a number between 1 and 5!"
+                    puts "------------------------------------------------------------"
+                end
+            end
+        end
+    end
+    if in_database == false
+        puts `clear`
+        puts "------------------------------------------------------------"
+        puts "That place is not in the database!"
+        puts "------------------------------------------------------------"
+    end
 end
 
 def option_5_yes_update(places)
@@ -281,14 +322,13 @@ end
 
 def option_6
     puts `clear`
-    puts "-----------------------------"
+    puts "------------------------------------------------------------"
     puts "Thank you for using the app. Good bye and enjoy your night!"
-    puts "-----------------------------"
+    puts "------------------------------------------------------------"
 end
 
-
 def is_valid
-    puts "-----------------------------"
+    puts "------------------------------------------------------------"
     puts "Please enter a valid option"
-    puts "-----------------------------"
+    puts "------------------------------------------------------------"
 end

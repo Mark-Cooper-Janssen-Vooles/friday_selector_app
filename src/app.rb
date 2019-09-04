@@ -42,8 +42,10 @@ if name == nil
 end
   
 puts `clear`
+puts "------------------------------------------------------------"
 puts pastel.blue.bold(font.write("FRIDAY", letter_spacing: 1.5))
 puts "Welcome to the CoderAcademy Friday Selector app".white.on_black.underline
+puts "------------------------------------------------------------"
 
 while true
  puts "#{name}, enter the number for the option you want to do:"
