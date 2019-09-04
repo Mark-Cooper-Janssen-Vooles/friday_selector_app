@@ -35,16 +35,12 @@ while true
         #select a place at random
         run_option_1(places)
    elsif option == 2
-        #get user input
-        info = question_set
-        #check if user is sure
-        places = are_you_sure(info, places)
+        #get user input to add to database
+        info = OptionTwo.question_set
+        #check if user is sure of their input
+        places = OptionTwo.are_you_sure(info, places)
     elsif option == 3
-        puts "-----------------------------"
-        places.each do |place|
-            puts place.name
-        end
-        puts "-----------------------------"
+        option_3_display_all(places)
     elsif option == 6
         option_6
         break
