@@ -17,6 +17,7 @@ def update_places_csv(places)
     end
 end
 
+
 puts "Welcome to the CoderAcademy Friday Selector app."
 
 while true
@@ -34,35 +35,37 @@ while true
    if option == 1
         run_option_1(places)
    elsif option == 2
-        puts "What is the name of the place you wish to add?"
-        print "> "
-        place_name = gets.strip
-        puts "What is the location of the place you wish to add? Please type the street number, street and suburb."
-        print "> "
-        place_location = gets.strip
-        puts "What would you rate this place out of 5? Feel free to use decimal places."
-        print "> "
-        place_rating = gets.strip.to_f
-        #need to do some checking of data here
-        puts "You have entered the place as name: #{place_name}, location: #{place_location}, rating: #{place_rating}"
-        puts "If this information is correct and you wish to add it to the database, enter 'Y'. Otherwise enter 'N'."
-        print "> "
-        input = gets.strip.capitalize
-        if input == 'Y'
-            #code to add to CSV
-            places_name = place_name + "1"
-            places_name = Place.new({name: place_name, location: place_location, rating: place_rating})
-            places.push(places_name)
-            #update CSV then re-read the CSV
-            update_places_csv(places)
-            read_csv
+        #get user input
+        info = question_set
 
-        elsif input == 'N'
-            #re-run loop
-        else
-            puts "-----------------------------"
-            puts "Please enter either 'Y' or 'N'."
-            puts "-----------------------------"
+        place_name = info[0]
+        place_location = info[1]
+        place_rating = info[2]
+
+        status = "incomplete"
+        while status == "incomplete"
+            puts "in second loop"
+            # puts "You have entered the place as name: #{place_name}, location: #{place_location}, rating: #{place_rating}"
+            # puts "If this information is correct and you wish to add it to the database, enter 'Y'. Otherwise enter 'N'."
+            # print "> "
+            # input = gets.strip.capitalize
+            # if input == 'Y'
+            #     #code to add to CSV
+            #     places_name = place_name + "1"
+            #     places_name = Place.new({name: place_name, location: place_location, rating: place_rating})
+            #     places.push(places_name)
+            #     #update CSV then re-read the CSV
+            #     update_places_csv(places)
+            #     read_csv
+            #     #exit loop
+            #     status = true
+            # elsif input == 'N'
+            #     question_set
+            # else
+            #     puts "-----------------------------"
+            #     puts "Please enter either 'Y' or 'N'."
+            #     puts "-----------------------------"
+            # end
         end
     elsif option == 3
         puts "-----------------------------"
