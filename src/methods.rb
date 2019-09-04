@@ -141,6 +141,63 @@ def option_3_display(places)
 
 end
 
+def option_4_delete_place(places)
+    def view_all(places)
+    puts "-----------------------------"
+    places_names = places.map do |place|
+        place.name
+    end
+    places_names.sort.each do |places_name|
+        puts places_name
+    end
+    puts "-----------------------------"
+    end
+
+    def delete_place(places, place_to_delete)
+        places.each_with_index do |place, index|
+            if place.name == place_to_delete
+                places.delete_at(index)
+                update_places_csv(places)
+                read_csv
+            else
+                puts "That place is not in our database!"
+            end
+        end
+        puts `clear`
+        puts "The place was deleted from the database!"
+    end
+
+    def yes_delete(places)
+        puts "Enter the name of the place you want to delete"
+        print "> "
+        place_to_delete = STDIN.gets.strip
+        delete_place(places, place_to_delete)
+    end
+
+    puts `clear`
+    prompt = TTY::Prompt.new
+    response = prompt.select("Do you know the name of the place you want to delete, or do you want to view a list of all the places? (Warning: it may be long!)") do |menu|
+        menu.choice "I want to see a list of places"
+        menu.choice "I know the name of the place I want to delete."
+    end
+
+    if response == "I want to see a list of places"
+        view_all(places)
+        prompt2 = TTY::Prompt.new
+        response2 = prompt2.select("Do you still want to delete a place?") do |menu|
+            menu.choice "Yes"
+            menu.choice "No"
+        end
+        if response2 == "Yes"
+            yes_delete(places)
+        elsif response2 == "No"
+            puts `clear`
+        end
+    elsif response == "I know the name of the place I want to delete."
+        yes_delete(places)
+    end
+end
+
 def option_6
     puts `clear`
     puts "-----------------------------"
