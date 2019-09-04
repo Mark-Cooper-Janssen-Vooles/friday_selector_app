@@ -1,13 +1,13 @@
 #create new place instance object
 class Place
-    attr_reader :name, :location, :created_by
-    attr_accessor :rating, :visits
+    attr_reader :name, :location, :created_by, :rating
+    attr_accessor :visits
     def initialize(hash)
         @created_by = hash[:created_by]
         @name = hash[:name]
         @location = hash[:location]
         @rating = hash[:rating]
-        @vists = 0
+        @visits = hash[:visits]
     end
     #possible description method?
     def self.all
@@ -19,7 +19,6 @@ PLACES_FILE = 'list_places.csv'
 
 ###Read information from CSV file: 
 def read_csv
-    headers = []
     values = []
     File.open(PLACES_FILE).each_with_index do |line, index|
             if line.length > 1
@@ -35,6 +34,8 @@ def read_csv
         Place.new({created_by: place[0], name: place[1], location: place[2], rating: place[3], visits: place[4] })
     end
 end
+
+
 
 ##Write information to CSV file:
 def update_places_csv(places)

@@ -6,6 +6,10 @@ def run_option_1(places)
     puts randomized_array[0].name.white.on_black.underline
     puts randomized_array[0].location
     puts "-----------------------------"
+    response = prompt.select("Are you actually going to go there? Selecting yes will increase the visits count.", %w(Yes No))
+    if response == "Yes"
+        puts randomized_array[0]
+    end
 end
 
 module OptionTwo
@@ -75,7 +79,7 @@ module OptionTwo
             if input == 'Y'
                 #code to add to CSV
                 places_name = place_name + "1"
-                places_name = Place.new({created_by: name, name: place_name, location: place_location, rating: place_rating})
+                places_name = Place.new({created_by: name, name: place_name, location: place_location, rating: place_rating, visits: 0})
                 places.push(places_name)
                 #update CSV then re-read the CSV
                 update_places_csv(places)
@@ -99,7 +103,9 @@ def option_3_display_all(places)
     puts `clear`
     puts "-----------------------------"
     places.each do |place|
-        p "#{place.name}"
+       # p "#{place.name}"
+        p "#{place.created_by}, #{place.name}, #{place.location}, #{place.rating}, #{place.visits}"
+
     end
     puts "-----------------------------"
 end
