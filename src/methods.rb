@@ -141,7 +141,19 @@ def option_3_display(places)
 
 end
 
-def option_4_delete_place(places)
+# def view_all(places)
+#     puts "-----------------------------"
+#     places_names = places.map do |place|
+#         place.name
+#     end
+#     places_names.sort.each do |places_name|
+#         puts places_name
+#     end
+#     puts "-----------------------------"
+# end
+
+
+#def option_4_delete_place(places)
     def view_all(places)
     puts "-----------------------------"
     places_names = places.map do |place|
@@ -167,13 +179,14 @@ def option_4_delete_place(places)
         puts "The place was deleted from the database!"
     end
 
-    def yes_delete(places)
-        puts "Enter the name of the place you want to delete"
-        print "> "
-        place_to_delete = STDIN.gets.strip
-        delete_place(places, place_to_delete)
-    end
+def option_4_yes_delete(places)
+    puts "Enter the name of the place you want to delete"
+    print "> "
+    place_to_delete = STDIN.gets.strip
+    delete_place(places, place_to_delete)
+end
 
+def option_4_delete_place(places)
     puts `clear`
     prompt = TTY::Prompt.new
     response = prompt.select("Do you know the name of the place you want to delete, or do you want to view a list of all the places? (Warning: it may be long!)") do |menu|
@@ -189,12 +202,70 @@ def option_4_delete_place(places)
             menu.choice "No"
         end
         if response2 == "Yes"
-            yes_delete(places)
+            option_4_yes_delete(places)
         elsif response2 == "No"
             puts `clear`
         end
     elsif response == "I know the name of the place I want to delete."
-        yes_delete(places)
+        option_4_yes_delete(places)
+    end
+end
+
+
+def update_place(places, place_to_update)
+    places.each_with_index do |place, index|
+        if place.name.downcase == place_to_update.downcase
+            puts "The current rating is #{place.rating}."
+            puts "What rating do you want to give it instead?"
+            puts "It can be anything from 1 to 5, decimals allowed."
+            print "> "
+            input = STDIN.gets.strip.to_f
+                #check if input is an 
+            if input >= 1 || input <= 5
+                place.rating = input
+                puts "The rating for #{place.name} is now #{place.rating}."
+                
+                update_places_csv(places)
+                read_csv
+            else
+                puts "You need to put a number between 1 and 5."
+            end
+
+        end
+    end
+    # puts `clear`
+    # puts "The place was deleted from the database!"
+end
+
+def option_5_yes_update(places)
+    puts "Enter the name of the place you want to update"
+    print "> "
+    place_to_update = STDIN.gets.strip
+    update_place(places, place_to_update)
+end
+
+def option_5_update_rating(places)
+    puts `clear`
+    prompt = TTY::Prompt.new
+    response = prompt.select("Do you know the name of the place you want to update the rating for, or do you want to view a list of all the places? (Warning: it may be long!)") do |menu|
+        menu.choice "I want to see a list of places"
+        menu.choice "I know the name of the place I want to update."
+    end
+
+    if response == "I want to see a list of places"
+        view_all(places)
+        prompt2 = TTY::Prompt.new
+        response2 = prompt2.select("Do you still want to update a place?") do |menu|
+            menu.choice "Yes"
+            menu.choice "No"
+        end
+        if response2 == "Yes"
+            option_5_yes_update(places)
+        elsif response2 == "No"
+            puts `clear`
+        end
+    elsif response == "I know the name of the place I want to update."
+        option_5_yes_update(places)
     end
 end
 

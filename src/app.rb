@@ -69,8 +69,12 @@ while true
     elsif option == 4
         option_4_delete_place(places)
     elsif option == 5
+        option_5_update_rating(places)
         #update existing place
-        
+
+        #find the place based on the name... same as option 4
+
+        #update the rating 
     elsif option == 6
         option_6
         break

@@ -1,7 +1,7 @@
 #create new place instance object
 class Place
-    attr_reader :name, :location, :created_by, :rating
-    attr_accessor :visits
+    attr_reader :name, :location, :created_by
+    attr_accessor :visits, :rating
     def initialize(hash)
         @created_by = hash[:created_by]
         @name = hash[:name]
