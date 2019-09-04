@@ -59,7 +59,7 @@ module OptionTwo
         end
         rating = ""
         while rating == ""
-            puts "What would you rate this place out of 5? Feel free to use decimal places."
+            puts "What would you rate this place out of 5? Feel free to use decimal places. We recommend using the google rating for less bias."
             print "> "
             place_rating = gets.strip.to_f
             if data_checker(place_rating, "num").class != NilClass
@@ -119,17 +119,19 @@ def option_3_display_all(places)
             end
 
             sorted_array.each do |place|
-                puts "#{place.name} with #{place.visits} visits"
+                puts "#{place.name} | #{place.visits.to_s}"
             end
         puts "-----------------------------"
     elsif response == "Highest rated"
-        # puts "-----------------------------"
-        # places.each do |place|
-        #     p "#{place.name}"
-        #     #p "#{place.created_by}, #{place.name}, #{place.location}, #{place.rating}, #{place.visits}"
+        puts "-----------------------------"
+            sorted_array = places.sort! do |place2, place1| 
+                place1.rating.to_i <=> place2.rating.to_i
+            end
 
-        # end
-        # puts "-----------------------------"
+            sorted_array.each do |place|
+                puts "#{place.name} | #{place.rating.to_s}"
+            end
+        puts "-----------------------------"
     end
 
 
