@@ -265,7 +265,7 @@ def update_place(places, place_to_update)
                 print "> "
                 input = STDIN.gets.strip.to_f
                     #check if input is an 
-                if input >= 1 && input <= 5
+                if input >= 1 && input <= 5 && input != place
                     place.rating = input
                     puts `clear`
                     puts "The rating for #{place.name} is now #{place.rating}."
@@ -275,7 +275,8 @@ def update_place(places, place_to_update)
                 else
                     puts `clear`
                     puts "------------------------------------------------------------"
-                    puts "You need to put a number between 1 and 5!"
+                    puts "You need to put a number between 1 and 5"
+                    puts "...and that isn't the current rating!"
                     puts "------------------------------------------------------------"
                 end
             end

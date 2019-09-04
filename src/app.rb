@@ -15,7 +15,6 @@ Place.all.each do |place|
     places.push(place)
 end
 
-
 name = start_up
 
 while true
@@ -29,7 +28,6 @@ while true
  print "> "
  option = STDIN.gets.strip.to_i
    if option == 1
-        #select a place at random
         puts `clear`
         run_option_1(places)
    elsif option == 2
@@ -43,11 +41,6 @@ while true
         option_4_delete_place(places)
     elsif option == 5
         option_5_update_rating(places)
-        #update existing place
-
-        #find the place based on the name... same as option 4
-
-        #update the rating 
     elsif option == 6
         option_6
         break
