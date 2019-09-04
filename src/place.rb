@@ -1,5 +1,4 @@
-#require_relative 'app.rb'
-
+#create new place instance object
 class Place
     attr_reader :name, :location
     attr_accessor :rating

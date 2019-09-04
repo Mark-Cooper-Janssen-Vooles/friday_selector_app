@@ -9,14 +9,13 @@ Place.all.each do |place|
 end
 
 def update_places_csv(places)
-    File.open('list_places.csv', "w") do |line|
+    File.open(PLACES_FILE, "w") do |line|
         places.each do |i|
             the_line = "#{i.name},#{i.location},#{i.rating}\n"
             line.write (the_line)
         end 
     end
 end
-
 
 puts "Welcome to the CoderAcademy Friday Selector app."
 
@@ -33,40 +32,13 @@ while true
  print "> "
  option = gets.strip.to_i
    if option == 1
+        #select a place at random
         run_option_1(places)
    elsif option == 2
         #get user input
         info = question_set
-
-        place_name = info[0]
-        place_location = info[1]
-        place_rating = info[2]
-
-        status = "incomplete"
-        while status == "incomplete"
-            puts "in second loop"
-            # puts "You have entered the place as name: #{place_name}, location: #{place_location}, rating: #{place_rating}"
-            # puts "If this information is correct and you wish to add it to the database, enter 'Y'. Otherwise enter 'N'."
-            # print "> "
-            # input = gets.strip.capitalize
-            # if input == 'Y'
-            #     #code to add to CSV
-            #     places_name = place_name + "1"
-            #     places_name = Place.new({name: place_name, location: place_location, rating: place_rating})
-            #     places.push(places_name)
-            #     #update CSV then re-read the CSV
-            #     update_places_csv(places)
-            #     read_csv
-            #     #exit loop
-            #     status = true
-            # elsif input == 'N'
-            #     question_set
-            # else
-            #     puts "-----------------------------"
-            #     puts "Please enter either 'Y' or 'N'."
-            #     puts "-----------------------------"
-            # end
-        end
+        #check if user is sure
+        places = are_you_sure(info, places)
     elsif option == 3
         puts "-----------------------------"
         places.each do |place|
@@ -74,11 +46,8 @@ while true
         end
         puts "-----------------------------"
     elsif option == 6
-        puts "-----------------------------"
-        puts "Thank you for using the app. Good bye and enjoy your night!"
-        puts "-----------------------------"
+        option_6
         break
-
     else
         puts "-----------------------------"
         puts "Please enter a valid option"
