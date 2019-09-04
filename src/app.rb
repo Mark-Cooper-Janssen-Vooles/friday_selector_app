@@ -4,13 +4,9 @@ require 'pastel'
 require "tty-prompt"
 require 'faker'
 require_relative 'place.rb'
-require_relative 'methods.rb'
-
+require_relative 'option_methods.rb'
+require_relative 'starting_methods.rb'
 require 'pry'
-
-prompt = TTY::Prompt.new
-font = TTY::Font.new(:doom)
-pastel = Pastel.new
 
 places = []
 read_csv
@@ -19,33 +15,8 @@ Place.all.each do |place|
     places.push(place)
 end
 
-name = ""
-def get_name
-    return name = ARGV[0]
-end
 
-name = get_name
-
-puts `clear`
-
-if name == nil
-    puts "You have failed to enter a name as the argument when you started this app."
-    puts "We will randomly generate a name for you, how do you like..."
-    name = Faker::Name.name 
-    #binding.pry
-    response = prompt.select("Are you happy being known as #{name}?", %w(Yes No))
-
-    if response == "No"
-        puts "Okay. Lets try again. We're going to exit the program and you'll need to run it again, but you'll have to add an argument with your name if you don't like our random generator!"
-        exit
-    end
-end
-  
-puts `clear`
-puts "------------------------------------------------------------"
-puts pastel.blue.bold(font.write("FRIDAY", letter_spacing: 1.5))
-puts "Welcome to the CoderAcademy Friday Selector app".white.on_black.underline
-puts "------------------------------------------------------------"
+name = start_up
 
 while true
  puts "#{name}, enter the number for the option you want to do:"

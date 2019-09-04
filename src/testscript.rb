@@ -36,6 +36,7 @@ begin
     end
 rescue => error
     p error
+    puts `say "something is wrong, master."`
 end
 
 
