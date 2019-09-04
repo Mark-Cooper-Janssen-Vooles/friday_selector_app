@@ -39,11 +39,12 @@ module OptionTwo
     end
 
     def self.question_set
+        puts `clear`
         name = ""
         while name == ""
             puts "What is the name of the place you wish to add?"
             print "> "
-            place_name = gets.strip.capitalize
+            place_name = STDIN.gets.strip.capitalize
             if data_checker(place_name, "word").class != NilClass
                 name = place_name
             end
@@ -52,7 +53,7 @@ module OptionTwo
         while place == ""
             puts "What is the location of the place you wish to add? Please type the street number, street and suburb."
             print "> "
-            place_location = gets.strip
+            place_location = STDIN.gets.strip
             if data_checker(place_location, "word").class != NilClass
                 place = place_location
             end
@@ -61,7 +62,7 @@ module OptionTwo
         while rating == ""
             puts "What would you rate this place out of 5? Feel free to use decimal places. We recommend using the google rating for less bias."
             print "> "
-            place_rating = gets.strip.to_f
+            place_rating = STDIN.gets.strip.to_f
             if data_checker(place_rating, "num").class != NilClass
                 rating = place_rating
             end
@@ -80,7 +81,7 @@ module OptionTwo
             puts "name: #{place_name}, location: #{place_location}, rating: #{place_rating}".white.on_black.underline
             puts "If this information is correct, #{name}, and you wish to add it to the database, enter 'Y'. Otherwise enter 'N'."
             print "> "
-            input = gets.strip.capitalize
+            input = STDIN.gets.strip.capitalize
             if input == 'Y'
                 #code to add to CSV
                 places_name = place_name + "1"
@@ -90,9 +91,11 @@ module OptionTwo
                 update_places_csv(places)
                 read_csv
                 #exit loop
+                puts `clear`
                 status = true
                 return places
             elsif input == 'N'
+                puts `clear`
                 question_set
             else
                 puts "-----------------------------"
@@ -104,7 +107,7 @@ module OptionTwo
 
 end
 
-def option_3_display_all(places)
+def option_3_display(places)
     puts `clear`
     prompt = TTY::Prompt.new
     response = prompt.select("Do you want to see a list ordered by most visited or highest rated?") do |menu|
@@ -113,6 +116,7 @@ def option_3_display_all(places)
     end
 
     if response == "Most visited"
+        puts `clear`
         puts "-----------------------------"
             sorted_array = places.sort! do |place2, place1| 
                 place1.visits.to_i <=> place2.visits.to_i
@@ -123,6 +127,7 @@ def option_3_display_all(places)
             end
         puts "-----------------------------"
     elsif response == "Highest rated"
+        puts `clear`
         puts "-----------------------------"
             sorted_array = places.sort! do |place2, place1| 
                 place1.rating.to_i <=> place2.rating.to_i
@@ -134,10 +139,10 @@ def option_3_display_all(places)
         puts "-----------------------------"
     end
 
-
 end
 
 def option_6
+    puts `clear`
     puts "-----------------------------"
     puts "Thank you for using the app. Good bye and enjoy your night!"
     puts "-----------------------------"

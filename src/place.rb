@@ -38,8 +38,6 @@ def read_csv
     end
 end
 
-
-
 ##Write information to CSV file:
 def update_places_csv(places)
     File.open(PLACES_FILE, "w") do |line|
