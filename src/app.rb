@@ -49,8 +49,6 @@ while true
         option_6
         break
     else
-        puts "-----------------------------"
-        puts "Please enter a valid option"
-        puts "-----------------------------"
+        is_valid
    end
 end

@@ -97,3 +97,9 @@ def option_6
     puts "Thank you for using the app. Good bye and enjoy your night!"
     puts "-----------------------------"
 end
+
+def is_valid
+    puts "-----------------------------"
+    puts "Please enter a valid option"
+    puts "-----------------------------"
+end
