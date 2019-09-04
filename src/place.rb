@@ -1,11 +1,13 @@
 #create new place instance object
 class Place
-    attr_reader :name, :location
-    attr_accessor :rating
+    attr_reader :name, :location, :created_by
+    attr_accessor :rating, :visits
     def initialize(hash)
+        @created_by = hash[:created_by]
         @name = hash[:name]
         @location = hash[:location]
-        @rating = hash[:rating]    
+        @rating = hash[:rating]
+        @vists = 0
     end
     #possible description method?
     def self.all
@@ -30,7 +32,7 @@ def read_csv
     end
     #adds .csv information into class to read the class database
     places_mapped.each do |place|
-        Place.new({name: place[0], location: place[1], rating: place[2]})
+        Place.new({created_by: place[0], name: place[1], location: place[2], rating: place[3], visits: place[4] })
     end
 end
 
@@ -38,7 +40,7 @@ end
 def update_places_csv(places)
     File.open(PLACES_FILE, "w") do |line|
         places.each do |i|
-            the_line = "#{i.name},#{i.location},#{i.rating}\n"
+            the_line = "#{i.created_by},#{i.name},#{i.location},#{i.rating},#{i.visits}\n"
             line.write (the_line)
         end 
     end

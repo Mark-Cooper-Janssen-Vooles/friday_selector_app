@@ -1,5 +1,9 @@
 # CoderAcademy Friday Selector
 
+An app that takes in recommendations, grows a .csv database and creates a randomly generated venue for activities after class on friday. 
+
+An advanced version of the app will create an algorithm and every instance of the "places" class will be assignemt a different probablily to appear based on its rating. 
+
 ## Software Development Plan
 
 * The initial menu items will be based off the *Contacts Terminal challenge*. The creation of a basic user interface will be the first step, with a working exit functionality to make it easier to test / work on the project in the terminal.
@@ -28,17 +32,19 @@ A Coder Academy student will simply turn the app on and select an item from the 
 
 ### Features 
 
-An app that takes in recommendations, grows a .csv database and creates a randomly generated venue for activities after class on friday. 
-
-An advanced version of the app will create an algorithm and every instance of the "places" class will be assignemt a different probablily to appear based on its rating. 
-
 The menu items will include: 
 1. Pick a place at random
 2. Add a place to the database 
-3. Add a rating to an existing place
+3. Show all places names in the database
 4. Remove a place from the database
-5. Display a list of the top 10 most popular places
-6. Exit the program
+5. Exit the program
+
+Picking a place at random will call upon a method and pass it the array of instance objects of the places class. This method will be stored in another file, "methods.rb". The method will shuffle the array, and then pick the first (index zero) from this newly ordered array. 
+
+Adding a place to the database will require a presistant database stored in a .csv file. Since the places themselves are going to be instance objects of the place class, they will need to be transformed from a string format into an object format each time the .csv file is read or written. Upon loading the program the .csv file will be read, and when a new place is added then the .csv file will need to be written (over written) and re-read. This function will require use of the inbuilt Ruby 'File' class. This option will need to allow user input to add the name, location, rating, and any other information the place may require. When the user inputs data there will need to be checks to see if they are entering valid data, including prompting the user to confirm if their entered data is what they meant. Due to how many methods will be required for this option, there may be a module required for option two's methods. 
+
+Showing all places names in the database will require a way to access the places names. A .each loop on the array "places" can loop through each of the objects stored in the places array, and display their names if a attr_reader is assigned to :name. 
+
 
 ### User Interaction and Experience
 
@@ -46,13 +52,11 @@ The user will start the program and a list of menu items will be displayed to th
 
 Picking a place at random will provide a place with a name, address, rating and distance from Coder Academy. 
 
-Adding a place to the database will create a new instance of the Place class. It will require the user to input a name and address, and the optional arguments of distance and rating. 
+Adding a place to the database will create a new instance of the Place class. It will require the user to input a name, location, rating and any other data if more is added. If the user fails to enter required data, the program will notifiy the user and loop through again requesting the same data to be added. 
 
-Adding a rating will enable the user add a rating (1-5) to the existing object. The rating will be an array. If there is already a rating present, there will be a feature which calculates the average score of the array.
+Removing a place from the database will simply delete that instance of the Places class. The user will be prompted to confirm they want to remove the place. 
 
-Removing a place from the database will simply delete that instance of the Places class.
-
-Displaying a list of the top 10 most popular places will display the 10 highest rated places
+Displaying a list of places will puts to the terminal a list of the places names found in te .csv database. 
 
 Exiting the program will exit the program.
 
@@ -62,8 +66,12 @@ Errors will be need to be handled when retrieving from Gems, using rescue / catc
 
 use this to do it. 
 include screenshot 
- https://www.lucidchart.com/pages/home
+
+ 1st attempt:
  https://www.lucidchart.com/documents/edit/336a31b0-b685-4d28-9eef-ee49e124b943/0_0?beaconFlowId=B97F72270375A25C
+
+2nd attempt:
+https://www.lucidchart.com/documents/edit/7fcfad27-3082-45e1-84e2-39ab4004f81a/0_0?beaconFlowId=74ED4AB24948A7E0
 
 - show the workflow/logic and/or integration of the features in your application for each feature.
 - utilise a recognised format or set of conventions for a control flow diagram, such as UML.
@@ -74,9 +82,8 @@ include screenshot
 - prioritise the implementation of different features, or checklist items within a feature
 - provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
 
-use this to do it: need 3 screenshots 
-https://trello.com/b/vN8tdQGt/terminal-app
 [Trello Project Management Link](https://trello.com/b/vN8tdQGt/terminal-app)
+
 Screenshot 1: 
 ![Trello Screenshot 1](https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png "Trello Screenshot 1")
 https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png
@@ -85,3 +92,4 @@ Screenshot 2:
 ![Trello Screenshot 1](https://i.ibb.co/h2L9kQx/Screen-Shot-2019-09-03-at-4-00-46-pm.png "Trello Screenshot 1")
 
 Screenshot 3: 
+![Trello Screenshot 1](https://i.ibb.co/sbrGnMQ/Screen-Shot-2019-09-04-at-11-29-52-am.png "Trello Screenshot 1")

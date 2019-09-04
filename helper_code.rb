@@ -1,3 +1,41 @@
+
+# if ARGV.length == 0
+#     name = "Fake name"
+#     # do something
+# else 
+#     name = ARGV[0]
+#     # give the user a name
+# end 
+# puts name
+
+# begin 
+#     name = ARGV[0]
+#     name.empty?
+# rescue StandardError => error
+#     p error
+#     puts "hi"
+# end 
+
+    if response == "No"
+      response = prompt.select("Okay. Do you want to see a list of 10 randomly generated names, or pick your own?") do |menu|
+          menu.choice "See a list"
+          menu.choice "Make my own"
+      end
+      if response == "See a list"
+          response = 
+          puts name1 = Faker::Name.name 
+          puts name2 = Faker::Name.name 
+          puts name3 = Faker::Name.name 
+          puts name4 = Faker::Name.name 
+          puts name5 = Faker::Name.name 
+      end
+
+      # puts "Okay. Lets try again. We're going to exit the program and you'll need to run it again, but you'll have to add an argument with your name if you don't like our random generator!"
+      # exit
+
+  end
+
+
 ## Contacts Termial Challenge ... bare-bones:
 mark = {
  name: "Mark",
