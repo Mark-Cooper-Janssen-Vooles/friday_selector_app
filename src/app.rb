@@ -56,7 +56,7 @@ while true
  puts "#{name}, enter the number for the option you want to do:"
  puts "1. Pick a place at random"
  puts "2. Add a place to the database"
- puts "3. View all places"
+ puts "3. View places"
  #puts "4. List top 10 most popular places"
  #puts "3. Add a rating to an existing place"
  #puts "4. Remove a place from the database"

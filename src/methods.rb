@@ -106,13 +106,33 @@ end
 
 def option_3_display_all(places)
     puts `clear`
-    puts "-----------------------------"
-    places.each do |place|
-        p "#{place.name}"
-        #p "#{place.created_by}, #{place.name}, #{place.location}, #{place.rating}, #{place.visits}"
-
+    prompt = TTY::Prompt.new
+    response = prompt.select("Do you want to see a list ordered by most visited or highest rated?") do |menu|
+        menu.choice "Most visited"
+        menu.choice "Highest rated"
     end
-    puts "-----------------------------"
+
+    if response == "Most visited"
+        puts "-----------------------------"
+            sorted_array = places.sort! do |place2, place1| 
+                place1.visits.to_i <=> place2.visits.to_i
+            end
+
+            sorted_array.each do |place|
+                puts "#{place.name} with #{place.visits} visits"
+            end
+        puts "-----------------------------"
+    elsif response == "Highest rated"
+        # puts "-----------------------------"
+        # places.each do |place|
+        #     p "#{place.name}"
+        #     #p "#{place.created_by}, #{place.name}, #{place.location}, #{place.rating}, #{place.visits}"
+
+        # end
+        # puts "-----------------------------"
+    end
+
+
 end
 
 def option_6
