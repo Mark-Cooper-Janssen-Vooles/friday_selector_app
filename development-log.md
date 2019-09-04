@@ -1,0 +1,4 @@
+## Development Log
+
+### Status update one:
+Currently facing a road block trying to create a method "data_checker" to check if data has been entered correctly for edge cases. The method is attempting to take in two arguments - the data to check, and the string "num" or "word", to know if you need to check the data for a number (integer or float) or string. Struggling to think about what to check for, my method from now will be to run the program in the terminal and mash some buttons and try to enter nothing to account for edge cases. I will also prompt the user to confirm if the data they have entered is correct, and then loop back to the original question if it was not. The next forseeable challenge will be getting the loop to work, as it is already within a loop. 

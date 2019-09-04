@@ -76,9 +76,12 @@ include screenshot
 
 use this to do it: need 3 screenshots 
 https://trello.com/b/vN8tdQGt/terminal-app
-
 [Trello Project Management Link](https://trello.com/b/vN8tdQGt/terminal-app)
-
 Screenshot 1: 
+![Trello Screenshot 1](https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png "Trello Screenshot 1")
 https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png
 
+Screenshot 2: 
+![Trello Screenshot 1](https://i.ibb.co/h2L9kQx/Screen-Shot-2019-09-03-at-4-00-46-pm.png "Trello Screenshot 1")
+
+Screenshot 3: 

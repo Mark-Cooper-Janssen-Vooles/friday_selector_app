@@ -8,14 +8,14 @@ Place.all.each do |place|
     places.push(place)
 end
 
-def update_places_csv(places)
-    File.open(PLACES_FILE, "w") do |line|
-        places.each do |i|
-            the_line = "#{i.name},#{i.location},#{i.rating}\n"
-            line.write (the_line)
-        end 
-    end
-end
+# def update_places_csv(places)
+#     File.open(PLACES_FILE, "w") do |line|
+#         places.each do |i|
+#             the_line = "#{i.name},#{i.location},#{i.rating}\n"
+#             line.write (the_line)
+#         end 
+#     end
+# end
 
 puts "Welcome to the CoderAcademy Friday Selector app."
 
