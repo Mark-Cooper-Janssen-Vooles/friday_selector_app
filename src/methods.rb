@@ -1,3 +1,5 @@
+require "tty-prompt"
+
 def run_option_1(places)
     puts "-----------------------------"
     puts "You should go to..."
@@ -6,9 +8,12 @@ def run_option_1(places)
     puts randomized_array[0].name.white.on_black.underline
     puts randomized_array[0].location
     puts "-----------------------------"
-    response = prompt.select("Are you actually going to go there? Selecting yes will increase the visits count.", %w(Yes No))
+    prompt1 = TTY::Prompt.new
+    response = prompt1.select("Are you actually going to go there? Selecting yes will increase the visits count.", %w(Yes No))
     if response == "Yes"
-        puts randomized_array[0]
+        randomized_array[0].increase_visits
+        update_places_csv(places)
+        read_csv
     end
 end
 
@@ -103,8 +108,8 @@ def option_3_display_all(places)
     puts `clear`
     puts "-----------------------------"
     places.each do |place|
-       # p "#{place.name}"
-        p "#{place.created_by}, #{place.name}, #{place.location}, #{place.rating}, #{place.visits}"
+        p "#{place.name}"
+        #p "#{place.created_by}, #{place.name}, #{place.location}, #{place.rating}, #{place.visits}"
 
     end
     puts "-----------------------------"

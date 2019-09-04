@@ -10,6 +10,9 @@ class Place
         @visits = hash[:visits]
     end
     #possible description method?
+    def increase_visits
+        @visits = @visits.to_i + 1
+    end
     def self.all
         ObjectSpace.each_object(self).to_a
       end
