@@ -89,7 +89,11 @@ Screenshot 1:
 https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png
 
 Screenshot 2: 
-![Trello Screenshot 1](https://i.ibb.co/h2L9kQx/Screen-Shot-2019-09-03-at-4-00-46-pm.png "Trello Screenshot 1")
+![Trello Screenshot 2](https://i.ibb.co/h2L9kQx/Screen-Shot-2019-09-03-at-4-00-46-pm.png "Trello Screenshot 2")
 
 Screenshot 3: 
-![Trello Screenshot 1](https://i.ibb.co/sbrGnMQ/Screen-Shot-2019-09-04-at-11-29-52-am.png "Trello Screenshot 1")
+![Trello Screenshot 4](https://i.ibb.co/sbrGnMQ/Screen-Shot-2019-09-04-at-11-29-52-am.png "Trello Screenshot 3")
+
+
+Screenshot 4: 
+![Trello Screenshot 4](https://i.ibb.co/hdy9Cc5/Screen-Shot-2019-09-05-at-9-53-23-am.png"Trello Screenshot 4")
