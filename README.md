@@ -1,9 +1,5 @@
 # CoderAcademy Friday Selector
 
-An app that takes in recommendations, grows a .csv database and creates a randomly generated venue for activities after class on friday. 
-
-An advanced version of the app will create an algorithm and every instance of the "places" class will be assignemt a different probablily to appear based on its rating. 
-
 ## Software Development Plan
 
 * The initial menu items will be based off the *Contacts Terminal challenge*. The creation of a basic user interface will be the first step, with a working exit functionality to make it easier to test / work on the project in the terminal.
@@ -20,7 +16,7 @@ An advanced version of the app will create an algorithm and every instance of th
 
 * If there is time, a rating will be added to the place class and this will factor into the probability of a place being selected. I.e. places with a low rating will be selected less, and those with an unknown or higher rating will be selected more. At initialisation the user will be asked if they wish to provide a starting rating. 
 
-### Statement of Purpose and Scope
+## Statement of Purpose and Scope
 
 Develop a statement of purpose and scope for your application. It must include:
 - describe at a high level what the application will do
@@ -30,19 +26,17 @@ Develop a statement of purpose and scope for your application. It must include:
 
 300 - 500 words.
 
-Please include this in your software development plan as a separate section with an appropriate heading.
+An app that takes in recommendations, grows a .csv database and creates a randomly generated venue for activities after class on friday. It includes all CRUD features, you can ask the program to select a place for you to visit at random (read). You can create a new place to add to the database (create). You can view a list of all the places, sorted by your choosing from the options (read). You can update the rating of a place (update). You can delete a place from the database (delete). 
 
-=====
+An advanced version of the app will create an algorithm and every instance of the "places" class will be assignemt a different probablily to appear based on its rating, which will be developed time permitting.
 
-The application will choose a venue for students at Coder Academy who wish to partake in activities on friday after class. 
+The application will choose a venue for students at Coder Academy who wish to partake in activities on friday after class if its decided we don't want to go to The Bottom End which was decided  
 
 The aim is to remove decision fatigue and promote a more enjoyable experience for students at Coder Academy by providing a place to go to, as based off a probability generated from the ranking of a previously visted place.
 
-The target audience is Coder Academy students.
+A Coder Academy student, preferrably the student rep, will run the app and select an item from the menu. If they have been suggested places to add, they can add them to increase the database. If a place visited was disliked by the cohort, they can choose to delete it. If a place visited was better or worse than expected, the rating can be updated. When a place is chosen and confirmed that the cohurt will be visiting, the visit count for that place increases.
 
-A Coder Academy student will simply turn the app on and select an item from the menu. 
-
-### Features 
+## Features 
 
 The menu items will include: 
 1. Pick a place at random
@@ -58,7 +52,7 @@ Adding a place to the database will require a presistant database stored in a .c
 Showing all places names in the database will require a way to access the places names. A .each loop on the array "places" can loop through each of the objects stored in the places array, and display their names if a attr_reader is assigned to :name. The user will be prompted with the ability to show places ranked by their rating, their visits, or list of places that is over 4.5. 
 
 
-### User Interaction and Experience
+## User Interaction and Experience
 
 The user will start the program and a list of menu items will be displayed to them. They will simply input the number of the menu item they wish to do. 
 
@@ -74,25 +68,14 @@ Exiting the program will exit the program.
 
 Errors will be be handled by the methods, which include if / elsif statements.
 
-### Control Flow Diagram
+## Control Flow Diagram
 
-use this to do it. 
-include screenshot 
+[Lucid Chart Link](https://www.lucidchart.com/documents/edit/c474d582-f730-4a51-812c-84875d9c1794/0_0?beaconFlowId=4322371CD802E6E4)
 
- 1st attempt:
- https://www.lucidchart.com/documents/edit/336a31b0-b685-4d28-9eef-ee49e124b943/0_0?beaconFlowId=B97F72270375A25C
 
-2nd attempt:
-https://www.lucidchart.com/documents/edit/7fcfad27-3082-45e1-84e2-39ab4004f81a/0_0?beaconFlowId=74ED4AB24948A7E0
+![Lucid Chart Screenshot](https://i.ibb.co/ngNsWxW/terminal-app.jpg "Lucid Chart Screenshot")
 
-- show the workflow/logic and/or integration of the features in your application for each feature.
-- utilise a recognised format or set of conventions for a control flow diagram, such as UML.
-
-### Implementation Plan 
-
-- outlines how each feature will be implemented and a checklist of tasks for each feature
-- prioritise the implementation of different features, or checklist items within a feature
-- provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
+## Implementation Plan 
 
 [Trello Project Management Link](https://trello.com/b/vN8tdQGt/terminal-app)
 
