@@ -36,7 +36,7 @@ require 'pry'
 # end
 
 def run_option_1(places)
-
+  puts `clear`
   def random_weighted(places)
     max = sum_of_weights(places)
     target = rand(1..max) 
@@ -378,6 +378,7 @@ def run_option_6
 end
 
 def is_valid
+  puts `clear`
   puts '------------------------------------------------------------'
   puts 'Please enter a valid option'
   puts '------------------------------------------------------------'

@@ -26,7 +26,6 @@ loop do
   option = STDIN.gets.strip.to_i
 
   if option == 1
-    puts `clear`
     run_option_1(places)
   elsif option == 2
     run_option_2
@@ -40,7 +39,6 @@ loop do
     run_option_6
     break
   else
-    puts `clear`
     is_valid
   end
 end

@@ -67,10 +67,10 @@ Exiting the program will quit the program.
 
 ## Implementation Plan 
 
-| Feature        | Steps           | Time to Complete  |
+| Example Feature        | Steps           | Time to Complete  |
 | ------------- |:-------------:| -----:|
-| Return a randomized array, based on rating with a higher rating meaning a higher chance of appearance.    | Create the method |  |
-|       | Test to see if it works      |    |
+| Return a randomized array, based on rating with a higher rating meaning a higher chance of appearance.    | Create the method, test to see if it works | 2 hours |
+|       |      |    |
 ||       |     |
 
 
