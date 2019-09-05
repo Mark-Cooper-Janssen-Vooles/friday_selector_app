@@ -22,6 +22,18 @@ An advanced version of the app will create an algorithm and every instance of th
 
 ### Statement of Purpose and Scope
 
+Develop a statement of purpose and scope for your application. It must include:
+- describe at a high level what the application will do
+- identify the problem it will solve and explain why you are developing it
+- identify the target audience
+- explain how a member of the target audience will use it
+
+300 - 500 words.
+
+Please include this in your software development plan as a separate section with an appropriate heading.
+
+=====
+
 The application will choose a venue for students at Coder Academy who wish to partake in activities on friday after class. 
 
 The aim is to remove decision fatigue and promote a more enjoyable experience for students at Coder Academy by providing a place to go to, as based off a probability generated from the ranking of a previously visted place.
@@ -39,11 +51,11 @@ The menu items will include:
 4. Remove a place from the database
 5. Exit the program
 
-Picking a place at random will call upon a method and pass it the array of instance objects of the places class. This method will be stored in another file, "methods.rb". The method will shuffle the array, and then pick the first (index zero) from this newly ordered array. 
+Picking a place at random will call upon a method and pass it the array of instance objects of the places class. This method will be stored in another file, "option_methods.rb". The method will shuffle the array, and then pick the first (index zero) from this newly ordered array. 
 
-Adding a place to the database will require a presistant database stored in a .csv file. Since the places themselves are going to be instance objects of the place class, they will need to be transformed from a string format into an object format each time the .csv file is read or written. Upon loading the program the .csv file will be read, and when a new place is added then the .csv file will need to be written (over written) and re-read. This function will require use of the inbuilt Ruby 'File' class. This option will need to allow user input to add the name, location, rating, and any other information the place may require. When the user inputs data there will need to be checks to see if they are entering valid data, including prompting the user to confirm if their entered data is what they meant. Due to how many methods will be required for this option, there may be a module required for option two's methods. 
+Adding a place to the database will require a presistant database stored in a .csv file. Since the places themselves are going to be instance objects of the place class, they will need to be transformed from a string format into an object format each time the .csv file is read or written. Upon loading the program the .csv file will be read, and when a new place is added then the .csv file will need to be written (over written) and re-read. This function will require use of the inbuilt Ruby 'File' class. This option will need to allow user input to add the name, location, rating, and any other information the place may require. When the user inputs data there will need to be checks to see if they are entering valid data, including prompting the user to confirm if their entered data is what they meant. If their data is considered invalid, it will tell the user and loop back to the question. 
 
-Showing all places names in the database will require a way to access the places names. A .each loop on the array "places" can loop through each of the objects stored in the places array, and display their names if a attr_reader is assigned to :name. 
+Showing all places names in the database will require a way to access the places names. A .each loop on the array "places" can loop through each of the objects stored in the places array, and display their names if a attr_reader is assigned to :name. The user will be prompted with the ability to show places ranked by their rating, their visits, or list of places that is over 4.5. 
 
 
 ### User Interaction and Experience
@@ -60,7 +72,7 @@ Displaying a list of places will puts to the terminal a list of the places names
 
 Exiting the program will exit the program.
 
-Errors will be need to be handled when retrieving from Gems, using rescue / catch. Other errors will be tested using if statements.
+Errors will be be handled by the methods, which include if / elsif statements.
 
 ### Control Flow Diagram
 
@@ -91,5 +103,5 @@ Screenshot 2:
 ![Trello Screenshot 2](https://i.ibb.co/X3CNrJc/Screen-Shot-2019-09-05-at-10-11-58-am.png "Trello Screenshot 2")
 
 Screenshot 3: 
-![Trello Screenshot 4](https://i.ibb.co/sbrGnMQ/Screen-Shot-2019-09-04-at-11-29-52-am.png "Trello Screenshot 3")
+![Trello Screenshot 3](https://i.ibb.co/594DFh9/Screen-Shot-2019-09-05-at-11-50-23-am.png "Trello Screenshot 3")
 
