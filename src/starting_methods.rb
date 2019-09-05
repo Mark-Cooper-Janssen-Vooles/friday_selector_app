@@ -40,6 +40,6 @@ def start_up
     puts pastel.blue.bold(font.write("FRIDAY", letter_spacing: 1.5))
     puts "Welcome to the CoderAcademy Friday Selector app".white.on_black.underline
     puts "------------------------------------------------------------"
-    puts `say "Welcome to the CoderAcademy Friday Selector app"`
+    #puts `say "Welcome to the CoderAcademy Friday Selector app"`
     return name
 end

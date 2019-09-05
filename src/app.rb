@@ -12,6 +12,8 @@ end
 
 name = start_up
 
+#marks_shuffle(places)
+
 while true
  puts "#{name}, enter the number for the option you want to do:"
  puts "1. Pick a place at random"
@@ -22,22 +24,20 @@ while true
  puts "6. Exit the program"
  print "> "
  option = STDIN.gets.strip.to_i
+
    if option == 1
         puts `clear`
         run_option_1(places)
    elsif option == 2
-        #get user input to add to database
-        info = OptionTwo.question_set
-        #check if user is sure of their input
-        places = OptionTwo.are_you_sure(info, places, name)
+        run_option_2
     elsif option == 3
-        option_3_display(places)
+        run_option_3(places)
     elsif option == 4
-        option_4_delete_place(places)
+        run_option_4(places)
     elsif option == 5
-        option_5_update_rating(places)
+        run_option_5(places)
     elsif option == 6
-        option_6
+        run_option_6
         break
     else
         puts `clear`

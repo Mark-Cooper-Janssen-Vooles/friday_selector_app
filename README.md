@@ -18,14 +18,6 @@
 
 ## Statement of Purpose and Scope
 
-Develop a statement of purpose and scope for your application. It must include:
-- describe at a high level what the application will do
-- identify the problem it will solve and explain why you are developing it
-- identify the target audience
-- explain how a member of the target audience will use it
-
-300 - 500 words.
-
 An app that takes in recommendations, grows a .csv database and creates a randomly generated venue for activities after class on friday. It includes all CRUD features, you can ask the program to select a place for you to visit at random (read). You can create a new place to add to the database (create). You can view a list of all the places, sorted by your choosing from the options (read). You can update the rating of a place (update). You can delete a place from the database (delete). 
 
 An advanced version of the app will create an algorithm and every instance of the "places" class will be assignemt a different probablily to appear based on its rating, which will be developed time permitting.
@@ -54,19 +46,17 @@ Showing all places names in the database will require a way to access the places
 
 ## User Interaction and Experience
 
-The user will start the program and a list of menu items will be displayed to them. They will simply input the number of the menu item they wish to do. 
+The user will start the program and a list of menu items will be displayed to them. They will simply input the number of the menu item they wish to do. They must enter 1, 2, 3, 4, 5 or 6. If they enter anything else, an error will displayed and they will be prompted to enter again. 
 
-Picking a place at random will provide a place with a name, address, rating and distance from Coder Academy. 
+Picking a place at random will provide a place with a name, address, rating and distance from Coder Academy. They will then be asked if they are actually going to go there, and if they select yes this will increase the visits count by 1. This input is handled by the TTY-prompt gem so no error handling is required, as they can only pick for two options.
 
-Adding a place to the database will create a new instance of the Place class. It will require the user to input a name, location, rating and any other data if more is added. If the user fails to enter required data, the program will notifiy the user and loop through again requesting the same data to be added. 
+Adding a place to the database will create a new instance of the Place class. It will require the user to input a name, location, rating and any other data if more is added. If the user fails to enter required data, the program will notifiy the user and loop through again requesting the same data to be added. The data is required to be more than blank, however there is not currently a perfect way to check the data input and the format (especially for something like the address). In order to combat this, after entry to user is prompted to confirm if their entry is correct (and the entry is displayed to them). A more advanced version of the app could check the data more thoroughly, that it satisfies more criteria. 
 
-Removing a place from the database will simply delete that instance of the Places class. The user will be prompted to confirm they want to remove the place. 
+Removing a place from the database will simply delete that instance of the Places class. The user will be prompted to confirm they want to remove the place. If what they enter isn't a places name, they will be told and no place will be removed.
 
-Displaying a list of places will puts to the terminal a list of the places names found in te .csv database. 
+Displaying a list of places will puts to the terminal a list of the places names found in the .csv database. It will prompt the user to order by rating, visits or to only see places over 4.5 stars - again this is handled by TTY-prompt so no error handling is required.
 
-Exiting the program will exit the program.
-
-Errors will be be handled by the methods, which include if / elsif statements.
+Exiting the program will quit the program.
 
 ## Control Flow Diagram
 
@@ -76,6 +66,13 @@ Errors will be be handled by the methods, which include if / elsif statements.
 ![Lucid Chart Screenshot](https://i.ibb.co/ngNsWxW/terminal-app.jpg "Lucid Chart Screenshot")
 
 ## Implementation Plan 
+
+| Feature        | Steps           | Time to Complete  |
+| ------------- |:-------------:| -----:|
+| Return a randomized array, based on rating with a higher rating meaning a higher chance of appearance.    | Create the method |  |
+|       | Test to see if it works      |    |
+||       |     |
+
 
 [Trello Project Management Link](https://trello.com/b/vN8tdQGt/terminal-app)
 
@@ -88,3 +85,9 @@ Screenshot 2:
 Screenshot 3: 
 ![Trello Screenshot 3](https://i.ibb.co/594DFh9/Screen-Shot-2019-09-05-at-11-50-23-am.png "Trello Screenshot 3")
 
+Screenshot 4: 
+![Trello Screenshot 4](https://i.ibb.co/fH0j8D6/Screen-Shot-2019-09-05-at-4-16-45-pm.png "Trello Screenshot 4")
+
+## Github Repository 
+
+https://github.com/markke4/friday_selector_app

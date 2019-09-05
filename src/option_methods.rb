@@ -1,10 +1,45 @@
 require_relative "csv.rb"
 require "tty-prompt"
+require "pry"
+
+def marks_shuffle(places)
+    # sorted_array = places.sort! do |place2, place1| 
+    #     place1.rating.to_i <=> place2.rating.to_i
+    # end
+
+    # sorted_array.each do |place|
+    #     place
+    # end
+
+    # print sorted_array
+
+    sorted_array = places.sort do |place2, place1| 
+        place2.rating.to_i <=> place1.rating.to_i 
+    end.reverse
+
+    sorted_array.each do |place|
+        puts "#{place.name} | #{place.rating.to_s}"
+    end
+
+
+end
+
+# def probability_distribution(prob, place)
+#     randomized_array = []
+#     if place.rating.to_i >= 4
+#         if rand() <= prob
+#             return place
+#         end
+#     else
+#         return place
+#     end
+# end
+            
+
 
 def run_option_1(places)
     puts "------------------------------------------------------------"
     puts "You should go to..."
-
     randomized_array = places.shuffle
     puts randomized_array[0].name.white.on_black.underline
     puts randomized_array[0].location
@@ -118,7 +153,14 @@ module OptionTwo
 
 end
 
-def option_3_display(places)
+def run_option_2
+    #get user input to add to database
+    info = OptionTwo.question_set
+    #check if user is sure of their input
+    places = OptionTwo.are_you_sure(info, places, name)
+end
+
+def run_option_3(places)
     puts `clear`
     prompt = TTY::Prompt.new
     response = prompt.select("Do you want to see a list ordered by most visited or highest rated?") do |menu|
@@ -141,10 +183,10 @@ def option_3_display(places)
     elsif response == "Highest rated - all"
         puts `clear`
         puts "------------------------------------------------------------"
-            sorted_array = places.sort! do |place2, place1| 
-                place1.rating.to_i <=> place2.rating.to_i
-            end
-
+            sorted_array = places.sort do |place2, place1| 
+                place2.rating.to_i <=> place1.rating.to_i 
+            end.reverse
+        
             sorted_array.each do |place|
                 puts "#{place.name} | #{place.rating.to_s}"
             end
@@ -158,11 +200,13 @@ def option_3_display(places)
                     place
                 end
             end
-            #print over_four_half
-            over_four_half.each do |place|
-                if place != nil
-                    puts place.name
+            over_four_half.compact!
+            if over_four_half.length > 1
+                over_four_half.each do |place|
+                        puts place.name
                 end
+            else
+                puts "There are no places with over 4.5 stars!"
             end
         end
         over_four_point_five(places)
@@ -221,7 +265,7 @@ def option_4_yes_delete(places)
     delete_place(places, place_to_delete)
 end
 
-def option_4_delete_place(places)
+def run_option_4(places)
     puts `clear`
     prompt = TTY::Prompt.new
     response = prompt.select("Do you know the name of the place you want to delete, or do you want to view a list of all the places? (Warning: it may be long!)") do |menu|
@@ -298,7 +342,7 @@ def option_5_yes_update(places)
     update_place(places, place_to_update)
 end
 
-def option_5_update_rating(places)
+def run_option_5(places)
     puts `clear`
     prompt = TTY::Prompt.new
     response = prompt.select("Do you know the name of the place you want to update the rating for, or do you want to view a list of all the places? (Warning: it may be long!)") do |menu|
@@ -323,7 +367,7 @@ def option_5_update_rating(places)
     end
 end
 
-def option_6
+def run_option_6
     puts `clear`
     puts "------------------------------------------------------------"
     puts "Thank you for using the app. Good bye and enjoy your night!"

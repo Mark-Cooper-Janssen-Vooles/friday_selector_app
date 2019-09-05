@@ -3,12 +3,11 @@ chmod +x ./build.sh
 #copy across files to distribution directory
 mkdir dist
 cp ./src/app.rb ./dist
+cp ./csv.rb ./dist
+cp ./src/list_places.csv ./dist
 cp ./src/option_methods.rb ./dist
 cp ./src/place.rb ./dist
 cp ./src/starting_methods.rb ./dist
-cp ./src/list_places.csv ./dist
-
-cp ./src/testscript.rb ./dist
 #install gems
 gem install colorize
 gem install faker
