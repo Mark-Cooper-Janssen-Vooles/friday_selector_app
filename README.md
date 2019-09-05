@@ -85,15 +85,11 @@ https://www.lucidchart.com/documents/edit/7fcfad27-3082-45e1-84e2-39ab4004f81a/0
 [Trello Project Management Link](https://trello.com/b/vN8tdQGt/terminal-app)
 
 Screenshot 1: 
-![Trello Screenshot 1](https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png "Trello Screenshot 1")
-https://i.ibb.co/bdsd8Vt/Screen-Shot-2019-09-03-at-1-51-52-pm.png
+![Trello Screenshot 1](https://i.ibb.co/Wy8GvsD/Screen-Shot-2019-09-05-at-10-13-01-am.png "Trello Screenshot 1")
 
 Screenshot 2: 
-![Trello Screenshot 2](https://i.ibb.co/h2L9kQx/Screen-Shot-2019-09-03-at-4-00-46-pm.png "Trello Screenshot 2")
+![Trello Screenshot 2](https://i.ibb.co/X3CNrJc/Screen-Shot-2019-09-05-at-10-11-58-am.png "Trello Screenshot 2")
 
 Screenshot 3: 
 ![Trello Screenshot 4](https://i.ibb.co/sbrGnMQ/Screen-Shot-2019-09-04-at-11-29-52-am.png "Trello Screenshot 3")
 
-
-Screenshot 4: 
-![Trello Screenshot 4](https://i.ibb.co/hdy9Cc5/Screen-Shot-2019-09-05-at-9-53-23-am.png"Trello Screenshot 4")
