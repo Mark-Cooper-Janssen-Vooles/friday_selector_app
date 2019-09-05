@@ -16,3 +16,6 @@ gem install pastel
 gem install pry
 gem install tty-font
 gem install tty-prompt
+#change directory
+cd dist
+ruby app.rb
