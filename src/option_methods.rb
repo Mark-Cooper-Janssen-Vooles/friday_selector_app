@@ -1,3 +1,4 @@
+require_relative "csv.rb"
 require "tty-prompt"
 
 def run_option_1(places)

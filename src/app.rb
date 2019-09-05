@@ -1,8 +1,3 @@
-require 'colorize'
-require 'tty-font'
-require 'pastel'
-require "tty-prompt"
-require 'faker'
 require_relative 'place.rb'
 require_relative 'option_methods.rb'
 require_relative 'starting_methods.rb'
