@@ -36,11 +36,28 @@ require 'pry'
 # end
 
 def run_option_1(places)
+
+  def random_weighted(places)
+    max = sum_of_weights(places)
+    target = rand(1..max) 
+    places.each do |place|
+      return place if target <= place.rating.to_i
+      target -= place.rating.to_i
+    end
+  end
+  
+  def sum_of_weights(places)
+    return places.reduce(0){ |sum, place| sum + place.rating.to_i }
+  end
+  
+  place_chosen = random_weighted(places)
+
   puts '------------------------------------------------------------'
   puts 'You should go to...'
-  randomized_array = places.shuffle
-  puts randomized_array[0].name.white.on_black.underline
-  puts randomized_array[0].location
+  #randomized_array = places.shuffle
+  #puts randomized_array.name.white.on_black.underline
+  puts place_chosen.name.white.on_black.underline
+  puts place_chosen.location
   puts '------------------------------------------------------------'
   prompt1 = TTY::Prompt.new
   response = prompt1.select('Are you actually going to go there? Selecting yes will increase the visits count.', %w[Yes No])
