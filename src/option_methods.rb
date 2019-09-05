@@ -165,11 +165,10 @@ module OptionTwo
         elsif should_push == true
           puts `clear`
           puts '------------------------------------------------------------'
-          puts "A place with that name is already in the database"
+          puts "A place with that name is already in the database."
           puts "It was not added!"
           puts '------------------------------------------------------------'
         end
-
         status = true
         return places
       elsif input == 'N'
