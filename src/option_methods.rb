@@ -36,7 +36,7 @@ require 'pry'
 # end
 
 def run_option_1(places)
-  puts `clear`
+
   def random_weighted(places)
     max = sum_of_weights(places)
     target = rand(1..max) 
@@ -142,15 +142,34 @@ module OptionTwo
         # code to add to CSV
         places_name = place_name + '1'
         places_name = Place.new(created_by: name, name: place_name, location: place_location, rating: place_rating, visits: 0)
-        places.push(places_name)
-        # update CSV then re-read the CSV
-        update_places_csv(places)
-        read_csv
-        # exit loop
-        puts `clear`
-        puts '------------------------------------------------------------'
-        puts "You have successfully added #{places_name.name} to the database!"
-        puts '------------------------------------------------------------'
+        #check if duplicate name
+        should_push = false
+        places.each do |place|
+          if place.name.downcase == places_name.name.downcase
+            puts "weird"
+            should_push = true
+            # puts place.name
+          end
+        end
+
+        if should_push == false
+          places.push(places_name)
+          # update CSV then re-read the CSV
+          update_places_csv(places)
+          read_csv
+          # exit loop
+          puts `clear`
+          puts '------------------------------------------------------------'
+          puts "You have successfully added #{places_name.name} to the database!"
+          puts '------------------------------------------------------------'
+        elsif should_push == true
+          puts `clear`
+          puts '------------------------------------------------------------'
+          puts "A place with that name is already in the database"
+          puts "It was not added!"
+          puts '------------------------------------------------------------'
+        end
+
         status = true
         return places
       elsif input == 'N'
@@ -165,11 +184,11 @@ module OptionTwo
   end
 end
 
-def run_option_2
+def run_option_2(places, name)
   # get user input to add to database
   info = OptionTwo.question_set
   # check if user is sure of their input
-  places = OptionTwo.are_you_sure(info, places, name)
+  places_updated = OptionTwo.are_you_sure(info, places, name)
 end
 
 def run_option_3(places)
@@ -378,7 +397,6 @@ def run_option_6
 end
 
 def is_valid
-  puts `clear`
   puts '------------------------------------------------------------'
   puts 'Please enter a valid option'
   puts '------------------------------------------------------------'

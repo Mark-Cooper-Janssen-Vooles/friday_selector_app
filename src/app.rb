@@ -28,7 +28,7 @@ loop do
   if option == 1
     run_option_1(places)
   elsif option == 2
-    run_option_2
+    run_option_2(places, name)
   elsif option == 3
     run_option_3(places)
   elsif option == 4
