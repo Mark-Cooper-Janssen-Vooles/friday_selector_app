@@ -327,7 +327,7 @@ def option_6
     puts "------------------------------------------------------------"
     puts "Thank you for using the app. Good bye and enjoy your night!"
     puts "------------------------------------------------------------"
-    puts `say "Enjoy your night!`
+    puts `say "Enjoy your night!"`
 end
 
 def is_valid
