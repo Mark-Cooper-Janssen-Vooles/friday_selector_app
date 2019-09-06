@@ -31,14 +31,14 @@ def run_option_1(places)
   prompt1 = TTY::Prompt.new
   response = prompt1.select('Are you actually going to go there? Selecting yes will increase the visits count.', %w[Yes No])
   if response == 'Yes'
-    randomized_array[0].increase_visits
+    place_chosen.increase_visits
     update_places_csv(places)
     read_csv
     puts `clear`
     puts '------------------------------------------------------------'
-    puts "Enjoy your vist to #{randomized_array[0].name}!"
+    puts "Enjoy your vist to #{place_chosen.name}!"
     puts '------------------------------------------------------------'
-    puts `say "Enjoy your vist to #{randomized_array[0].name}!"`
+    puts `say "Enjoy your vist to #{place_chosen.name}!"`
   else
     puts `clear`
   end
@@ -197,7 +197,7 @@ def run_option_3(places)
   elsif response == 'Display all information'
     puts `clear`
     puts '------------------------------------------------------------'
-    sorted_array = places.sort! do |place2, place1|
+    sorted_array = places.sort do |place2, place1|
       place1.visits <=> place2.visits
     end
     sorted_array.each do |place|
@@ -213,7 +213,8 @@ def run_option_3(places)
         place if place.rating.to_f >= 4.5
       end
       over_four_half.compact!
-      if over_four_half.length > 1
+
+      if over_four_half.length >= 1
         over_four_half.each do |place|
           puts place.name
         end
