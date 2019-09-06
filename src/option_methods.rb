@@ -4,37 +4,6 @@ require_relative 'csv.rb'
 require 'tty-prompt'
 require 'pry'
 
-# def marks_shuffle(places)
-#   # sorted_array = places.sort! do |place2, place1|
-#   #     place1.rating.to_i <=> place2.rating.to_i
-#   # end
-
-#   # sorted_array.each do |place|
-#   #     place
-#   # end
-
-#   # print sorted_array
-
-#   sorted_array = places.sort do |place2, place1|
-#     place2.rating.to_i <=> place1.rating.to_i
-#   end.reverse
-
-#   sorted_array.each do |place|
-#     puts "#{place.name} | #{place.rating}"
-#   end
-# end
-
-# def probability_distribution(prob, place)
-#     randomized_array = []
-#     if place.rating.to_i >= 4
-#         if rand() <= prob
-#             return place
-#         end
-#     else
-#         return place
-#     end
-# end
-
 def run_option_1(places)
 
   def random_weighted(places)

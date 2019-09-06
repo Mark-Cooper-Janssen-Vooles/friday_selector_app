@@ -3,7 +3,7 @@ chmod +x ./build.sh
 #copy across files to distribution directory
 mkdir dist
 cp ./src/app.rb ./dist
-cp ./csv.rb ./dist
+cp ./src/csv.rb ./dist
 cp ./src/list_places.csv ./dist
 cp ./src/option_methods.rb ./dist
 cp ./src/place.rb ./dist

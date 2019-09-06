@@ -1,6 +1,6 @@
 # CoderAcademy Friday Selector App
 
-## Instructions for use / Help
+## Instructions For Use
 
 **Instructions**
 1. Make sure you have ruby installed on your machine. I used rbenv. This required homebrew.

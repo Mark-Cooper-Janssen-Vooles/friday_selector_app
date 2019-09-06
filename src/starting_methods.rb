@@ -33,6 +33,12 @@ def start_up
 
     if response == 'No'
       puts "Okay. Lets try again. We're going to exit the program and you'll need to run it again, but you'll have to add an argument with your name if you don't like our random generator!"
+      puts ""
+      puts "Type:"
+      puts "cd dist"
+      puts "then:"
+      puts "ruby app.rb 'your name here'"
+      puts "to try again!"
       exit
     end
   end
