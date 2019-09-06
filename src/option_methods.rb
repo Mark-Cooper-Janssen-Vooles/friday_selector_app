@@ -102,6 +102,7 @@ module OptionTwo
 
     status = 'incomplete'
     while status == 'incomplete'
+      puts `clear`
       puts 'You have entered the place as...'
       puts "name: #{place_name}, location: #{place_location}, rating: #{place_rating}".white.on_black.underline
       puts "If this information is correct, #{name}, and you wish to add it to the database, enter 'Y'. Otherwise enter 'N'."
@@ -163,12 +164,13 @@ def run_option_3(places)
   puts `clear`
   prompt = TTY::Prompt.new
   response = prompt.select('Do you want to see a list ordered by most visited or highest rated?') do |menu|
-    menu.choice 'Most visited - all'
-    menu.choice 'Highest rated - all'
+    menu.choice 'Most visited'
+    menu.choice 'Highest rated'
     menu.choice 'Rated higher than 4.5 stars'
+    menu.choice 'Display all information'
   end
 
-  if response == 'Most visited - all'
+  if response == 'Most visited'
     puts `clear`
     puts '------------------------------------------------------------'
     sorted_array = places.sort! do |place2, place1|
@@ -176,18 +178,31 @@ def run_option_3(places)
     end
 
     sorted_array.each do |place|
-      puts "#{place.name} | #{place.visits}"
+      puts "#{place.name}, Visits: #{place.visits}"
+      #puts "Visits: #{place.visits}"
+      #puts "----"
     end
     puts '------------------------------------------------------------'
-  elsif response == 'Highest rated - all'
+  elsif response == 'Highest rated'
     puts `clear`
     puts '------------------------------------------------------------'
-    sorted_array = places.sort do |place2, place1|
-      place2.rating.to_i <=> place1.rating.to_i
+    sorted_array = places.sort do |place1, place2|
+      place1.rating.to_i <=> place2.rating.to_i
     end.reverse
 
     sorted_array.each do |place|
-      puts "#{place.name} | #{place.rating}"
+      puts "#{place.name}"
+    end
+    puts '------------------------------------------------------------'
+  elsif response == 'Display all information'
+    puts `clear`
+    puts '------------------------------------------------------------'
+    sorted_array = places.sort! do |place2, place1|
+      place1.visits <=> place2.visits
+    end
+    sorted_array.each do |place|
+      puts "Created by: #{place.created_by}, Name: #{place.name}, Location: #{place.location}, Rating: #{place.rating}, Visits: #{place.visits}"
+      puts ""
     end
     puts '------------------------------------------------------------'
   elsif response == 'Rated higher than 4.5 stars'
@@ -300,7 +315,7 @@ def update_place(places, place_to_update)
       print '> '
       input = STDIN.gets.strip.to_f
       # check if input is an
-      if input >= 1 && input <= 5 && input != place
+      if input >= 1 && input <= 5 && input != place.rating.to_f
         place.rating = input
         puts `clear`
         puts "The rating for #{place.name} is now #{place.rating}."
