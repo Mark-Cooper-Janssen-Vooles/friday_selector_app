@@ -74,6 +74,7 @@ A Coder Academy student, preferably the student rep, will run the app and select
 ## Features 
 
 The menu items will include: 
+
 ![Menu Options](https://i.ibb.co/vj9rkgG/Screen-Shot-2019-09-06-at-10-29-05-am.png "Menu Options")
 
 Picking a place at random will call upon a method and pass it the array of instance objects of the places class. This method will be stored in another file, "option_methods.rb". The method will shuffle the array, and then pick the first (index zero) from this newly ordered array. 
