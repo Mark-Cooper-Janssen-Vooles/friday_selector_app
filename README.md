@@ -3,10 +3,20 @@
 ## Instructions for use / Help
 
 **Instructions**
-* Resize your terminal to 60px wide
-* Make sure your sound is on!
-* From the current directory, in the terminal type 'sh bash.sh'.
-* If you want to input your name, select 'No' and run 'ruby app.rb "your_name"' from the terminal.
+1. Make sure you have ruby installed on your machine. I used rbenv. This required homebrew.
+2. Clone the repo.
+````
+git clone git@github.com:Mark-Cooper-Janssen-Vooles/friday_selector_app.git
+````
+3. CD into the directory you've cloned. 
+
+4. Resize your terminal to 60px wide
+5. Make sure your sound is on!
+6. From the current directory, in the terminal type:
+```` 
+sh build.sh
+````
+7. If you want to input your name, select 'No' and run: `ruby app.rb "your_name"` from the terminal.
 
 **Dependencies**
 The dependencies are all included in the bash script. They are colorize, faker, pastel, pry, tty-font and tty-prompt.
@@ -21,6 +31,17 @@ Your system needs to be able to run Ruby, i.e. the ability to use rbenv which re
 4. Removes a place from the database
 5. Updates a rating to an existing place
 6. Exists the program
+
+
+## Table of Contents
+
+* [Software Development Plan](#software-development-plan)
+* [Statement of Purpose and Scope](#Statement-of-Purpose-and-Scope)
+* [Features](#Features)
+* [User Interaction and Experience](#User-Interaction-and-Experience)
+* [Control Flow Diagram](#Control-Flow-Diagram)
+* [Implementation Plan](#Implementation-Plan)
+* [Github Link](#Github-Repository)
 
 ## Software Development Plan
 
@@ -53,18 +74,13 @@ A Coder Academy student, preferably the student rep, will run the app and select
 ## Features 
 
 The menu items will include: 
-1. Pick a place at random
-2. Add a place to the database 
-3. Show all places names in the database
-4. Remove a place from the database
-5. Exit the program
+![Menu Options](https://i.ibb.co/vj9rkgG/Screen-Shot-2019-09-06-at-10-29-05-am.png "Menu Options")
 
 Picking a place at random will call upon a method and pass it the array of instance objects of the places class. This method will be stored in another file, "option_methods.rb". The method will shuffle the array, and then pick the first (index zero) from this newly ordered array. 
 
 Adding a place to the database will require a presistant database stored in a .csv file. Since the places themselves are going to be instance objects of the place class, they will need to be transformed from a string format into an object format each time the .csv file is read or written. Upon loading the program the .csv file will be read, and when a new place is added then the .csv file will need to be written (over written) and re-read. This function will require use of the inbuilt Ruby 'File' class. This option will need to allow user input to add the name, location, rating, and any other information the place may require. When the user inputs data there will need to be checks to see if they are entering valid data, including prompting the user to confirm if their entered data is what they meant. If their data is considered invalid, it will tell the user and loop back to the question. If a places name is already in the database, the place will not be added and the user notified as such. 
 
 Showing all places names in the database will require a way to access the places names. A .each loop on the array "places" can loop through each of the objects stored in the places array, and display their names if a attr_reader is assigned to :name. The user will be prompted with the ability to show places ranked by their rating, their visits, or list of places that is over 4.5. 
-
 
 ## User Interaction and Experience
 
@@ -113,4 +129,4 @@ Screenshot 4:
 
 ## Github Repository 
 
-https://github.com/markke4/friday_selector_app
+[Link to my github](https://github.com/Mark-Cooper-Janssen-Vooles/friday_selector_app)

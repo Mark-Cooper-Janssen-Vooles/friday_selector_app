@@ -51,7 +51,7 @@ def run_option_1(places)
   end
   
   place_chosen = random_weighted(places)
-
+  puts `clear`
   puts '------------------------------------------------------------'
   puts 'You should go to...'
   #randomized_array = places.shuffle
